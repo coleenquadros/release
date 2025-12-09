@@ -11,11 +11,15 @@ base_images:
     name: builder
     namespace: stolostron
     tag: go1.22-linux
+  stolostron_builder_go1.25-linux:
+    name: builder
+    namespace: stolostron
+    tag: go1.25-linux
 build_root:
   image_stream_tag:
     name: builder
     namespace: stolostron
-    tag: go1.22-linux
+    tag: go1.25-linux
 images:
 - dockerfile_path: Dockerfile.prow
   from: base
@@ -23,6 +27,9 @@ images:
     stolostron_builder_go1.21-linux:
       as:
       - registry.ci.openshift.org/stolostron/builder:go1.21-linux
+    stolostron_builder_go1.25-linux:
+      - registry.ci.openshift.org/stolostron/builder:go1.25-linux
+      as:
   to: thanos
 promotion:
   to:
